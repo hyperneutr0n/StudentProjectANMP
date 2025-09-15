@@ -1,11 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     namespace = "com.neutron.studentproject"
     compileSdk = 36
+
+    buildFeatures{
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.neutron.studentproject"
@@ -36,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
