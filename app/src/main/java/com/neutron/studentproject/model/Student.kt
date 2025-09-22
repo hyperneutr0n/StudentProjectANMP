@@ -1,9 +1,11 @@
 package com.neutron.studentproject.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Student(
     var id: String?,
-    var name: String?,
-    var dob: String?,
+    @SerializedName("student_name") var name: String?,
+    @SerializedName("birth_of_date") var dob: String?,
     var phone: String?,
-    var photoUrl: String?
+    @SerializedName("photo_url") var photoUrl: String?
 )

@@ -8,7 +8,7 @@ android {
     namespace = "com.neutron.studentproject"
     compileSdk = 36
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 
@@ -55,4 +55,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.volley)
+    implementation(libs.gson)
+
 }
