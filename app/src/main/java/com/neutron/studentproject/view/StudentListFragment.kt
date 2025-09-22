@@ -46,11 +46,15 @@ class StudentListFragment : Fragment() {
             studentListAdapter.updateStudentList(it)
         })
 
-        viewModel.studentLoadErrorLD.observe(viewLifecycleOwner, Observer {
-            if (it == true)
+        viewModel.errorLD.observe(viewLifecycleOwner, Observer {
+            if (it == true) {
+                binding.txtError.text = "Something wrong when load student data"
                 binding.txtError.visibility = View.VISIBLE
-            else
-                binding.txtError.visibility = View.GONE
+                binding.recView.visibility = View.INVISIBLE
+            } else {
+                binding.txtError.visibility = View.INVISIBLE
+                binding.recView.visibility = View.VISIBLE
+            }
         })
 
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer {

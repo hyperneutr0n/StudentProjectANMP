@@ -4,16 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.neutron.studentproject.model.Student
 
-class ListViewModel : ViewModel() {
-    val studentsLD = MutableLiveData<ArrayList<Student>>()
-    val errorLD = MutableLiveData<Boolean>()
-    val loadingLD = MutableLiveData<Boolean>()
+class DetailViewModel : ViewModel() {
+    val studentLD = MutableLiveData<Student>()
 
-    fun refresh() {
-        loadingLD.value = true
-        errorLD.value = false
-
-        studentsLD.value = arrayListOf(
+    fun fetch(id: String) {
+        val data = arrayListOf(
             Student(
                 "16055", "Nonie", "1998/03/28", "5718444778", "http://dummyimage.com/75x100"
                         + ".jpg/cc0000/ffffff"
@@ -27,8 +22,6 @@ class ListViewModel : ViewModel() {
                 "http://dummyimage.com/75x100.jpg/5fa2dd/ffffff1"
             )
         )
-
-        errorLD.value = false
-        loadingLD.value = false
+        studentLD.value = data.find { it.id == id } as Student
     }
 }
