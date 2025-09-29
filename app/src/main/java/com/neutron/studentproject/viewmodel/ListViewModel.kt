@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.neutron.studentproject.model.Student
+import com.neutron.studentproject.util.FileHelper
 
 class ListViewModel(application: Application) : AndroidViewModel(application) {
     val studentsLD = MutableLiveData<ArrayList<Student>>()
@@ -32,10 +33,13 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
                 val result = Gson().fromJson<List<Student>>(it, sType)
                 studentsLD.value = result as ArrayList<Student>?
                 loadingLD.value = false
-                Log.d("Show Volley", result.toString())
+
+                val jsonString = Gson().toJson(result)
+                val fileHelper = FileHelper(getApplication())
+                fileHelper.writeToFile("Hello world")
+                Log.d("print_file", jsonString)
             },
             {
-                Log.d("Show Volley", it.toString())
                 errorLD.value = true
                 loadingLD.value = false
             }
